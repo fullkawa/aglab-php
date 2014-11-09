@@ -57,6 +57,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  # Provisioning by shell
+  $script = <<SCRIPT
+cd /vagrant
+composer install
+SCRIPT
+  config.vm.provision "shell", inline: $script
+
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a
   # policy server and optionally a policy file to run:
