@@ -1,0 +1,19 @@
+{
+    "name": "app",
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.cakephp.org"
+        }
+    ],
+    "require": {
+        "cakephp/cakephp": ">=2.4.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "cakephp/debug_kit" : "2.2.*"
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
+    }
+}
