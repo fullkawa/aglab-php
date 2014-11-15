@@ -60,7 +60,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provisioning by shell
   $script = <<SCRIPT
 cd /vagrant
-composer install
+
+if [ -e composer.lock ]
+then
+  composer update
+else
+  composer install
+fi
 SCRIPT
   config.vm.provision "shell", inline: $script
 
