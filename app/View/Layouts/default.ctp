@@ -10,6 +10,7 @@ $productDescription = __d('aglab_dev', 'AGLab: Analog Game Laboratory');
 		<?php echo $productDescription ?>:
 		<?php echo $this->fetch('title'); ?>
 	</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<?php
 		echo $this->Html->meta('icon');
 

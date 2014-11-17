@@ -1,4 +1,5 @@
 <?php
+App::uses('AppModel', 'Model');
 
 /**
  * ゲーム
@@ -7,7 +8,55 @@
  *
  * @author fullkawa
  */
-Class Game extends AppModel {
+class Game extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'title';
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'title' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Play' => array(
+			'className' => 'Play',
+			'foreignKey' => 'game_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
 	/**
 	 * コンテキスト(ゲーム内の各種ステータス)
@@ -24,7 +73,7 @@ Class Game extends AppModel {
 	 * </p>
 	 *
 	 * @return string $play_id プレイID
-	 */
+	*/
 	public function setup($params) {
 
 		return $play_id;
@@ -52,9 +101,15 @@ Class Game extends AppModel {
 	 *
 	 * @return array $report テストプレイ結果(レポート)
 	 */
-	public function autoplay($params) {
+	public function autoplay() {
 		$report = array();
+
+		$num_plays = $this->request->param['num_plays'];
+		for ($i=1; $i<=$num_plays; $i++) {
+			$this->log("count:$i");
+		}
 
 		return $report;
 	}
+
 }
