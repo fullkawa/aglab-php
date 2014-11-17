@@ -9,6 +9,8 @@
  */
 class Rule extends AppModel {
 
+	public $useTable = false; // FIXME: make table
+
 	/**
 	 * ルールを適用する
 	 *
