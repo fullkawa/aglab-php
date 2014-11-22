@@ -5,9 +5,9 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('game_id');
-		echo $this->Form->input('play_type');
+		echo $this->Form->input('type');
 		echo $this->Form->input('status');
-		echo $this->Form->input('num_plays');
+		echo $this->Form->input('num_players');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

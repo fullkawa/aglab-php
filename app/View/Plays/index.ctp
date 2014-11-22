@@ -5,9 +5,9 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('game_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('play_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('type'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
-			<th><?php echo $this->Paginator->sort('num_plays'); ?></th>
+			<th><?php echo $this->Paginator->sort('num_players'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('updated'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -20,9 +20,9 @@
 		<td>
 			<?php echo $this->Html->link($play['Game']['title'], array('controller' => 'games', 'action' => 'view', $play['Game']['id'])); ?>
 		</td>
-		<td><?php echo h($play['Play']['play_type']); ?>&nbsp;</td>
+		<td><?php echo h($play['Play']['type']); ?>&nbsp;</td>
 		<td><?php echo h($play['Play']['status']); ?>&nbsp;</td>
-		<td><?php echo h($play['Play']['num_plays']); ?>&nbsp;</td>
+		<td><?php echo h($play['Play']['num_players']); ?>&nbsp;</td>
 		<td><?php echo h($play['Play']['created']); ?>&nbsp;</td>
 		<td><?php echo h($play['Play']['updated']); ?>&nbsp;</td>
 		<td class="actions">

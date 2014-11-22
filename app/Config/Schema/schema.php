@@ -8,11 +8,25 @@ class AppSchema extends CakeSchema {
 	public function after($event = array()) {
 	}
 
+	public $autoplays = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'game_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'type' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'comment' => '???1=????????'),
+		'status' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'comment' => '??????0=???, 1=?????????, 2=???, 7=????????, 9=?????'),
+		'num_plays' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'comment' => '????'),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
+	);
+
 	public $games = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'version' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'memo' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'collate' => 'utf8_general_ci', 'comment' => '????', 'charset' => 'utf8'),
+		'version' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'comment' => '?????'),
+		'memo' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '??', 'charset' => 'utf8'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
@@ -37,9 +51,9 @@ class AppSchema extends CakeSchema {
 	public $plays = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'game_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
-		'play_type' => array('type' => 'integer', 'null' => false, 'default' => '1', 'unsigned' => false),
-		'status' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
-		'num_plays' => array('type' => 'integer', 'null' => false, 'default' => '1', 'unsigned' => false),
+		'type' => array('type' => 'integer', 'null' => false, 'default' => '1', 'unsigned' => false, 'comment' => '???1=?????, 2=?????(??)???'),
+		'status' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'comment' => '??????0=????, 2=????, 7=????????, 9=?????'),
+		'num_players' => array('type' => 'integer', 'null' => false, 'default' => '1', 'unsigned' => false, 'comment' => '\'?????'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(

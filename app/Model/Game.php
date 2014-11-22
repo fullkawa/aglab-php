@@ -59,6 +59,8 @@ class Game extends AppModel {
 	);
 
 	/**
+	 * @deprecated
+	 * @see Contextモデル
 	 * コンテキスト(ゲーム内の各種ステータス)
 	 * @var array
 	 */

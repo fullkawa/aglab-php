@@ -1,11 +1,11 @@
 <?php
-App::uses('Autoplay', 'Model');
+App::uses('PlayHistory', 'Model');
 
 /**
- * Autoplay Test Case
+ * PlayHistory Test Case
  *
  */
-class AutoplayTest extends CakeTestCase {
+class PlayHistoryTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,9 +13,9 @@ class AutoplayTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.autoplay',
-		'app.game',
+		'app.play_history',
 		'app.play',
+		'app.game',
 		'app.play_condition'
 	);
 
@@ -26,7 +26,7 @@ class AutoplayTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Autoplay = ClassRegistry::init('Autoplay');
+		$this->PlayHistory = ClassRegistry::init('PlayHistory');
 	}
 
 /**
@@ -35,7 +35,7 @@ class AutoplayTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Autoplay);
+		unset($this->PlayHistory);
 
 		parent::tearDown();
 	}

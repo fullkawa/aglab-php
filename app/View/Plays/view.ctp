@@ -11,9 +11,9 @@
 			<?php echo $this->Html->link($play['Game']['title'], array('controller' => 'games', 'action' => 'view', $play['Game']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Play Type'); ?></dt>
+		<dt><?php echo __('Type'); ?></dt>
 		<dd>
-			<?php echo h($play['Play']['play_type']); ?>
+			<?php echo h($play['Play']['type']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Status'); ?></dt>
@@ -21,9 +21,9 @@
 			<?php echo h($play['Play']['status']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Num Plays'); ?></dt>
+		<dt><?php echo __('Num Players'); ?></dt>
 		<dd>
-			<?php echo h($play['Play']['num_plays']); ?>
+			<?php echo h($play['Play']['num_players']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
