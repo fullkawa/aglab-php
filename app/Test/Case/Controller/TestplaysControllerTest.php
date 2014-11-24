@@ -14,7 +14,10 @@ class TestplaysControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.testplay',
-		'app.game'
+		'app.game',
+		'app.play',
+		'app.play_condition',
+		'app.report'
 	);
 
 /**

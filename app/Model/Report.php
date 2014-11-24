@@ -18,9 +18,9 @@ class Report extends AppModel {
 	 * @var array
 	 */
 	public $belongsTo = array(
-			'Play' => array(
-					'className' => 'Play',
-					'foreignKey' => 'play_id',
+			'Testplay' => array(
+					'className' => 'Testplay',
+					'foreignKey' => 'testplay_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''

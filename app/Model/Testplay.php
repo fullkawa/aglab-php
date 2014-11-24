@@ -71,10 +71,10 @@ class Testplay extends AppModel {
 	 * @var array
 	 */
 	public $hasOne = array(
-			'Report' => array(
-					'className' => 'Report',
-					'foreignKey' => 'testplay_id',
-			)
+		'Report' => array(
+			'className' => 'Report',
+			'foreignKey' => 'testplay_id',
+		)
 	);
 
 	/**
@@ -114,7 +114,7 @@ class Testplay extends AppModel {
 	public function getReady() {
 		try {
 			$query = array(
-				'conditions' => array('Testplay.status' => STATUS_NOT_PLAYED),
+				'conditions' => array('Testplay.status' => Testplay::STATUS_NOT_PLAYED),
 				'order' => array('Testplay.created DESC'),
 			);
 			$testplay = $this->find('first', $query);
@@ -171,10 +171,20 @@ class Testplay extends AppModel {
 	 * @return multitype: saveAll()で保存できるフォーマットで
 	 */
 	public function makePlays($id) {
-		$plays = array();
+		$plannerClassName = Configure::read('PlannerClassName');
+		$plannerPackageName = Configure::read('PlannerPackageName');
+		App::uses($plannerClassName, $plannerPackageName);
+		$this->Planner = new $plannerClassName;
 
-		// TODO: makePlays()実装
-
+		$testplay = $this->findById($id);
+		$num_trials = $testplay['Testplay']['num_plays'];
+		$conditions = array(
+			'game_id'	=> $testplay['Game']['id'],
+			'testplay_id'	=> $id,
+			'type'			=> 1, // FIXME: Play.type ?
+			'num_players'	=> 4,
+		);
+		$plays = $this->Planner->getPlans($num_trials, $conditions);
 		return $plays;
 	}
 

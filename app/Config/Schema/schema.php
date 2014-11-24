@@ -122,7 +122,7 @@ class AppSchema extends CakeSchema {
 		'game_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'type' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'comment' => '???1=????????'),
 		'status' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'comment' => '??????0=???, 1=?????????, 2=???, 7=????????, 9=?????'),
-		'num_plays' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'comment' => '????'),
+		'num_plays' => array('type' => 'integer', 'null' => false, 'default' => '1', 'unsigned' => false, 'comment' => '????'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
