@@ -29,8 +29,15 @@ class PlayHistory extends AppModel {
 		)
 	);
 
-	const STATUS_NOT_EXECUTED = 0;	// 未処理
-	const STATUS_EXECUTED = 9;	// 処理済み
+	/**
+	 * ステータス：未処理
+	 */
+	const STATUS_NOT_EXECUTED = 0;
+
+	/**
+	 * ステータス：処理済み
+	 */
+	const STATUS_EXECUTED = 9;
 
 	/**
 	 * プレイを1ステップ進める

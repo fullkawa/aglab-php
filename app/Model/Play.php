@@ -1,7 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Play Model
+ * プレイ
  *
  * @property Game $Game
  * @property PlayCondition $PlayCondition
@@ -94,4 +94,54 @@ class Play extends AppModel {
 		)
 	);
 
+	// ステータス：0=未プレイ, 2=プレイ中, 7=レポート作成待ち, 9=プレイ完了
+
+	/**
+	 * ステータス：未プレイ
+	 */
+	const STATUS_NOT_PLAYED = 0;
+
+	/**
+	 * ステータス：プレイ中
+	 */
+	const STATUS_ON_PLAY = 2;
+
+	/**
+	 * ステータス：レポート作成待ち
+	 */
+	const STATUS_WAIT_FOR_REPORT = 7;
+
+	/**
+	 * ステータス：プレイ完了
+	 */
+	const STATUS_DONE = 9;
+
+	/**
+	 * @deprecated
+	 * アクティブな(＝完了ではない)プレイを取得する
+	 *
+	 * @return array
+	 */
+	public function getOnActive() {
+		$query = array(
+			'conditions' => array('Play.status !=' => Play::STATUS_DONE),
+		);
+		$result = $this->find('all', $query);
+		return $result;
+	}
+
+	/**
+	 * 指定されたプレイのステータス一覧を取得する
+	 *
+	 * @param integer $id プレイID
+	 */
+	public function getStatusesById($id) {
+		$query = array(
+			'conditions' => array('Play.id' => $id),
+			'fields'	=> array('Play.id', 'Play.status', 'count(*) num'),
+			'order '	=> array('Play.id', 'Play.status'),
+		);
+		$result = $this->find('all', $query);
+		return $result;
+	}
 }

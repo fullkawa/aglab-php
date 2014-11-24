@@ -1,9 +1,9 @@
 <?php
 /**
- * AutoplayFixture
+ * TestplayFixture
  *
  */
-class AutoplayFixture extends CakeTestFixture {
+class TestplayFixture extends CakeTestFixture {
 
 /**
  * Fields

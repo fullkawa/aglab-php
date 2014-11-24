@@ -5,6 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
+			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('version'); ?></th>
 			<th><?php echo $this->Paginator->sort('memo'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -17,6 +18,7 @@
 	<tr>
 		<td><?php echo h($game['Game']['id']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['title']); ?>&nbsp;</td>
+		<td><?php echo h($game['Game']['name']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['version']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['memo']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['created']); ?>&nbsp;</td>
@@ -48,5 +50,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Game'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Plays'), array('controller' => 'plays', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Play'), array('controller' => 'plays', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
