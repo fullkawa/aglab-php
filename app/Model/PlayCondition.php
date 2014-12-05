@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
+ * @deprecated PlayConditon不要？
  * PlayCondition Model
  *
  * @property Play $Play

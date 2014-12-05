@@ -39,6 +39,31 @@ class PlayHistory extends AppModel {
 	 */
 	const STATUS_EXECUTED = 9;
 
+	public function beforeSave($options = array()) {
+		$this->log("[PlayHistory::beforeSave()] now", LOG_DEBUG);
+		if (!parent::beforeSave()) {
+			$this->log("[PlayHistory::beforeSave()] parent::beforeSave() is failed.", LOG_WARNING);
+			return false;
+		}
+
+		if (@$this->data['PlayHistory']['context']) {
+			$this->data['PlayHistory']['context'] = serialize($this->data['PlayHistory']['context']);
+			$this->log("[PlayHistory::beforeSave()] context->" . json_encode($this->data['PlayHistory']['context']), LOG_DEBUG);
+		}
+		return true;
+	}
+
+	public function afterFind($results, $primary = false) {
+		$results = parent::afterFind($results, $primary);
+
+		foreach ($results as &$result) {
+			if (@$result['PlayHistory']['context']) {
+				$result['PlayHistory']['context'] = unserialize($result['PlayHistory']['context']);
+			}
+		}
+		return $results;
+	}
+
 	/**
 	 * プレイを1ステップ進める
 	 *
@@ -54,10 +79,10 @@ class PlayHistory extends AppModel {
 				$this->data[$this->alias] = $data;
 			}
 		}
-		$this->log('[PlayHistory::next()] data -> ' . json_encode($this->data), LOG_DEBUG);
+		///$this->log('[PlayHistory::next()] data -> ' . json_encode($this->data), LOG_DEBUG);
 		$id = $this->data[$this->alias]['id'];
 
-		$context = unserialize($this->data[$this->alias]['context']);
+		$context = $this->data[$this->alias]['context'];
 		if (empty($context)) {
 			App::uses('Context', 'Model');
 			$context = Context::get();
@@ -70,10 +95,10 @@ class PlayHistory extends AppModel {
 		$next_data = array(
 			'play_id'	=> $this->data[$this->alias]['play_id'],
 			'parent_id'	=> $this->data[$this->alias]['id'],
-			'context'	=> serialize($next_context),
+			'context'	=> $next_context,
 			'status'	=> PlayHistory::STATUS_NOT_EXECUTED,
 		);
-		$this->log('[PlayHistory::next()] next_data -> ' . json_encode($next_data), LOG_DEBUG);
+		///$this->log('[PlayHistory::next()] next_data -> ' . json_encode($next_data), LOG_DEBUG);
 
 		$this->create();
 		$result = $this->save($next_data);

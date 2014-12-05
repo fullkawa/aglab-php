@@ -15,6 +15,29 @@ class CommonRules extends Object {
 	 */
 	public function setPrevNextPlayer($context) {
 		$this->log("[CommonRules setPrevNextPlayer()] now", LOG_DEBUG);
+		try {
+			if ($context['players'][0]['next_player']) {
+				return $context;
+			}
+		} catch (Exception $e) {
+			return $context;
+		}
+
+		$players = $context['players'];
+		$start = 0;
+		$last = count($players) - 1;
+		for ($i=$start; $i<=$last; $i++) {
+			if ($i === $start) {
+				$context['players'][$i]['prev_player'] = $last;
+			} else {
+				$context['players'][$i]['prev_player'] = $i - 1;
+			}
+			if ($i === $last) {
+				$context['players'][$i]['next_player'] = $start;
+			} else {
+				$context['players'][$i]['next_player'] = $i + 1;
+			}
+		}
 		return $context;
 	}
 
@@ -26,6 +49,21 @@ class CommonRules extends Object {
 	 */
 	public function setAllToDeck($context) {
 		$this->log("[CommonRules setAllToDeck()] now", LOG_DEBUG);
+		if (@$context['deck']) {
+			return $context;
+		}
+
+		// FIXME: カードセットはcontextから与えられるべき
+		$suits = array('C', 'D', 'H', 'S');
+		$nums = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K');
+		foreach ($suits as $suit) {
+			foreach ($nums as $num) {
+				$context['deck'][] = $suit . $num;
+			}
+		}
+		$context['deck'][] = 'JK';
+
+		$this->log("[CommonRules setAllToDeck()] end; context->" . json_encode($context), LOG_INFO);
 		return $context;
 	}
 
@@ -48,6 +86,23 @@ class CommonRules extends Object {
 	 */
 	public function dealAllCards($context) {
 		$this->log("[CommonRules dealAllCards()] now", LOG_DEBUG);
+		if (@$context['players'][0]['hands']) {
+			return $context;
+		}
+
+		if (empty($context['deck'])) {
+			throw new Exception('No deck !!!');
+		}
+
+		$i = 0;
+		foreach ($context['deck'] as $card) {
+			$context['players'][$i]['hands'][] = $card;
+			$i++;
+			if ($i >= count($context['players'])) {
+				$i = 0;
+			}
+		}
+		$this->log("[CommonRules dealAllCards()] end; context->" . json_encode($context), LOG_INFO);
 		return $context;
 	}
 

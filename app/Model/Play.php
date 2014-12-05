@@ -91,6 +91,19 @@ class Play extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+		'PlayHistory' => array(
+			'className' => 'PlayHistory',
+			'foreignKey' => 'play_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 
@@ -115,6 +128,11 @@ class Play extends AppModel {
 	 * ステータス：プレイ完了
 	 */
 	const STATUS_DONE = 9;
+
+	public function beforeSave($options = array()) {
+		$this->log("[Play::beforeSave()] now", LOG_DEBUG);
+		return true;
+	}
 
 	/**
 	 * @deprecated

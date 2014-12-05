@@ -49,7 +49,7 @@ class Rule extends AppModel {
 	 * @return array $_context ルール適用後のコンテキスト
 	 */
 	public function apply($rule, $context) {
-		$this->log("[Rule::apply()] rule -> " . json_encode($rule) . ", context -> " . json_encode($context), LOG_DEBUG);
+		///$this->log("[Rule::apply()] rule -> " . json_encode($rule) . ", context -> " . json_encode($context), LOG_DEBUG);
 		$className = $rule['Rule']['class'] . 'Rules';
 		$packageName = $rule['Rule']['class'] . '.Lib';
 		$methodName = $rule['Rule']['name'];
