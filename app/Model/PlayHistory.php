@@ -47,8 +47,9 @@ class PlayHistory extends AppModel {
 		}
 
 		if (@$this->data['PlayHistory']['context']) {
-			$this->data['PlayHistory']['context'] = serialize($this->data['PlayHistory']['context']);
 			$this->log("[PlayHistory::beforeSave()] context->" . json_encode($this->data['PlayHistory']['context']), LOG_DEBUG);
+			$this->data['PlayHistory']['context'] = serialize($this->data['PlayHistory']['context']);
+			///$this->log("[PlayHistory::beforeSave()] context->" . json_encode($this->data['PlayHistory']['context']), LOG_DEBUG);
 		}
 		return true;
 	}

@@ -1,4 +1,5 @@
 <?php
+App::uses('NoActionException', 'Lib');
 
 /**
  * プレイングアルゴリズム
@@ -26,13 +27,13 @@ class PlayingAlgorithm extends Object {
 	 */
 
 	/**
-	 * Context内にカレントプレイヤーのアクションが1つ以上なければならない。
+	 * Context内にアクションが1つ以上なければならない。
 	 *
 	 * @param array $context コンテキスト
 	 * @return boolean アクションが適切にセットされていない場合、false
 	 */
 	public function _checkActions($context) {
-		$actions = $context['current_player']['actions'];
+		$actions = $context['actions'];
 		if (!is_array($actions)) {
 			$message = 'Actions is not a array !';
 			throw new NoActionException($message);

@@ -15,7 +15,7 @@ class OldMaidRules extends Object {
 	 */
 	public function setupPlayers($context) {
 		$this->log("[OldMaidRules setupPlayers()] now", LOG_DEBUG);
-		if (@$context['players'] && (@$context['turn_player']===0)) {
+		if (@$context['players']) {
 			return $context;
 		}
 
@@ -24,7 +24,7 @@ class OldMaidRules extends Object {
 			$context['players'][] = array(
 				'player_name'	=> 'Player' . $i,
 				'playing_algorithm'	=> 'Randomizer',
-				'playing_algorithm_package'	=> 'Common.Lib/PlayingArgorithm',
+				'playing_algorithm_package'	=> 'Common.Lib/PlayingAlgorithm',
 			);
 		}
 		$context['turn_player'] = 0;
@@ -67,6 +67,26 @@ class OldMaidRules extends Object {
 	 */
 	public function drawCard($context) {
 		$this->log("[OldMaidRules drawCard()] now", LOG_DEBUG);
+		if ($context['stage'] !== 'game') {
+			return $context;
+		}
+
+		$turn_player = &$context['players'][$context['turn_player']];
+		$prev_player = &$context['players'][$turn_player['prev_player']];
+		$context['actions'] = $prev_player['hands'];
+
+		App::uses($turn_player['playing_algorithm'], $turn_player['playing_algorithm_package']);
+		$algorithm = new $turn_player['playing_algorithm'];
+		$card = $algorithm->getAction($context);
+
+		$prev_player['hands'] = array_values(array_filter($prev_player['hands'], function ($hand) use ($card) {
+			return ($hand !== $card);
+		}));
+		$turn_player['hands'][] = $card;
+
+		$description = "{$turn_player['player_name']} draw: $card";
+		$this->log($description, LOG_INFO);
+
 		return $context;
 	}
 }

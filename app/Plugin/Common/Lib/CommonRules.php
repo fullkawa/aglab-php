@@ -16,7 +16,7 @@ class CommonRules extends Object {
 	public function setPrevNextPlayer($context) {
 		$this->log("[CommonRules setPrevNextPlayer()] now", LOG_DEBUG);
 		try {
-			if ($context['players'][0]['next_player']) {
+			if (($context['stage'] !== 'setup') || $context['players'][0]['next_player']) {
 				return $context;
 			}
 		} catch (Exception $e) {
@@ -49,7 +49,7 @@ class CommonRules extends Object {
 	 */
 	public function setAllToDeck($context) {
 		$this->log("[CommonRules setAllToDeck()] now", LOG_DEBUG);
-		if (@$context['deck']) {
+		if (($context['stage'] !== 'setup') || @$context['deck']) {
 			return $context;
 		}
 
@@ -86,7 +86,7 @@ class CommonRules extends Object {
 	 */
 	public function dealAllCards($context) {
 		$this->log("[CommonRules dealAllCards()] now", LOG_DEBUG);
-		if (@$context['players'][0]['hands']) {
+		if ((@$context['stage'] !== 'setup') || @$context['players'][0]['hands']) {
 			return $context;
 		}
 
@@ -102,7 +102,30 @@ class CommonRules extends Object {
 				$i = 0;
 			}
 		}
+
+		$context['deck'] = array();
+
 		$this->log("[CommonRules dealAllCards()] end; context->" . json_encode($context), LOG_INFO);
+		return $context;
+	}
+
+	/**
+	 * 準備終了
+	 *
+	 * @param array $context
+	 * @return array
+	 */
+	public function setupEnd($context) {
+		$this->log("[CommonRules setupEnd()] now", LOG_DEBUG);
+		if ($context['stage'] !== 'setup') {
+			return $context;
+		}
+
+		if (@$context['players'][0]['hands']) {
+			$context['stage'] = 'game';
+			$this->log("Setup end.", LOG_INFO);
+		}
+
 		return $context;
 	}
 
@@ -125,6 +148,16 @@ class CommonRules extends Object {
 	 */
 	public function passTurn($context) {
 		$this->log("[CommonRules passTurn()] now", LOG_DEBUG);
+		if ($context['stage'] !== 'game') {
+			return $context;
+		}
+
+		$turn_player = $context['players'][$context['turn_player']];
+		$context['turn_player'] = $turn_player['next_player'];
+
+		$description = "Turn: {$turn_player['player_name']} -> {$context['players'][$turn_player['next_player']]['player_name']}";
+		$this->log($description, LOG_INFO);
+
 		return $context;
 	}
 

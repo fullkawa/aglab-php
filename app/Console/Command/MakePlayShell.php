@@ -29,7 +29,8 @@ class MakePlayShell extends AppShell {
 		$plays = $this->Testplay->makePlays($testplay_id);
 		foreach ($plays as &$play) {
 			$context = array(
-					'num_players' => $play['num_players']
+				'stage' => 'setup',
+				'num_players' => $play['num_players']
 			);
 			$data = array(
 				'Play' => $play,
