@@ -56,6 +56,45 @@ class OldMaidRules extends Object {
 	 */
 	public function dropPair($context) {
 		$this->log("[OldMaidRules dropPair()] now", LOG_DEBUG);
+
+		if ($context['stage'] == 'setup') {
+			foreach ($context['players'] as $i => $player) {
+				$players[] = $i;
+			}
+		} elseif ($context['stage'] == 'game') {
+			$players[] = $context['turn_player'];
+		} else {
+			return $context;
+		}
+		$this->log("[OldMaidRules::dropPair()] players->" . json_encode($players), LOG_DEBUG);
+
+		foreach ($players as $checked) {
+			$hands = $context['players'][$checked]['hands'];
+			$checktbl = array();
+			$removetbl = array_fill(0, count($hands), false);
+			foreach ($hands as $i => $hand) {
+				$lastletter = substr($hand, -1);
+				if (@$checktbl[$lastletter]) {
+					$removetbl[$checktbl[$lastletter]['pos']] = $checktbl[$lastletter]['hand'];
+					$removetbl[$i] = $hand;
+				} else {
+					$checktbl[$lastletter] = array(
+						'pos' => $i,
+						'hand' => $hand
+					);
+				}
+				if ($i < 10) {
+				///$this->log("$i => $hand", LOG_DEBUG);
+				///$this->log(" " . json_encode($removetbl), LOG_DEBUG);
+				}
+			}
+			$this->log("[OldMaidRules::dropPair()] removetbl->" . json_encode($removetbl), LOG_DEBUG);
+			$context['players'][$checked]['hands'] = array_values(array_filter($hands, function ($hand) use ($removetbl) {
+				return !in_array($hand, $removetbl);
+			}));
+			$this->log("Hands->" . json_encode($context['players'][$checked]['hands']), LOG_INFO);
+		}
+
 		return $context;
 	}
 

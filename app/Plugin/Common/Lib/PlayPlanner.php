@@ -52,7 +52,7 @@ class PlayPlanner extends Object {
 	public function buildNumPlayersSet($num_players) {
 		$set = array();
 		if (is_numeric($num_players)) {
-			for ($i = 1; $i <= $num_players; $i++) {
+			for ($i = 3; $i <= $num_players; $i++) { // FIXME: 3-> min
 				$set[] = $i;
 			}
 			shuffle($set);

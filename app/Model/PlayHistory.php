@@ -93,11 +93,15 @@ class PlayHistory extends AppModel {
 		if (@$next_context['step']) {
 			$next_context['step'] = $context['step'] + 1;
 		}
+		$next_status = PlayHistory::STATUS_NOT_EXECUTED;
+		if ($next_context['stage'] == 'ending') {
+			$next_status = PlayHistory::STATUS_EXECUTED;
+		}
 		$next_data = array(
 			'play_id'	=> $this->data[$this->alias]['play_id'],
 			'parent_id'	=> $this->data[$this->alias]['id'],
 			'context'	=> $next_context,
-			'status'	=> PlayHistory::STATUS_NOT_EXECUTED,
+			'status'	=> $next_status,
 		);
 		///$this->log('[PlayHistory::next()] next_data -> ' . json_encode($next_data), LOG_DEBUG);
 

@@ -85,7 +85,7 @@ class Rule extends AppModel {
 	public function applyAll($context) {
 		if (empty($this->rules)) {
 			$this->rules = $this->getAll();
-			$this->log('[Rule::applyAll()] Get all rules. -> ' . json_encode($this->rules), LOG_DEBUG);
+			///$this->log('[Rule::applyAll()] Get all rules. -> ' . json_encode($this->rules), LOG_DEBUG);
 		}
 		try {
 			foreach ($this->rules as $rule) {

@@ -182,7 +182,7 @@ class Testplay extends AppModel {
 			'game_id'	=> $testplay['Game']['id'],
 			'testplay_id'	=> $id,
 			'type'			=> 1, // FIXME: Play.type ?
-			'num_players'	=> 4,
+			'num_players'	=> 6,
 		);
 		$plays = $this->Planner->getPlans($num_trials, $conditions);
 		return $plays;

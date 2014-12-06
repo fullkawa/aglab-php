@@ -61,7 +61,7 @@ class CommonRules extends Object {
 				$context['deck'][] = $suit . $num;
 			}
 		}
-		$context['deck'][] = 'JK';
+		$context['deck'][] = 'Joker';
 
 		$this->log("[CommonRules setAllToDeck()] end; context->" . json_encode($context), LOG_INFO);
 		return $context;
@@ -75,6 +75,14 @@ class CommonRules extends Object {
 	 */
 	public function shuffleDeck($context) {
 		$this->log("[CommonRules shuffleDeck()] now", LOG_DEBUG);
+		if ((@$context['stage'] !== 'setup') || empty($context['deck'])) {
+			return $context;
+		}
+
+		shuffle($context['deck']);
+		$description = "Deck shuffled.";
+		$this->log($description, LOG_INFO);
+
 		return $context;
 	}
 
@@ -137,6 +145,23 @@ class CommonRules extends Object {
 	 */
 	public function withNoHands($context) {
 		$this->log("[CommonRules withNoHands()] now", LOG_DEBUG);
+
+		foreach ($context['players'] as $i => &$player) {
+			if (count($player['hands']) === 0 && !array_key_exists('gameend', $player)) {
+				$player['gameend'] = true;
+				$context['winners'][] = $player['player_name'];
+				$this->log("[CommonRules::withNoHands()] winners->" . json_encode($context['winners']), LOG_DEBUG);
+
+				// FIXME: プレイヤー抜け処理 →単独？
+				$prev = $player['prev_player'];
+				$next = $player['next_player'];
+				$context['players'][$prev]['next_player'] = $next;
+				$context['players'][$next]['prev_player'] = $prev;
+
+				$description = "{$player['player_name']} Win !";
+				$this->log($description, LOG_INFO);
+			}
+		}
 		return $context;
 	}
 
@@ -168,6 +193,14 @@ class CommonRules extends Object {
 	 */
 	public function gameEndWithOne($context) {
 		$this->log("[CommonRules gameEndWithOne()] now", LOG_DEBUG);
+		if ($context['stage'] !== 'game') {
+			return $context;
+		}
+
+		if (count(@$context['players']) - count(@$context['winners']) === 1) {
+			$context['stage'] = 'ending';
+			$this->log("Game end.", LOG_INFO);
+		}
 		return $context;
 	}
 
