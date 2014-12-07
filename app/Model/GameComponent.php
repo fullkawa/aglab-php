@@ -1,14 +1,18 @@
 <?php
 App::uses('AppModel', 'Model');
-
 /**
- * @deprecated
- * GamesPlugin Model
+ * GameComponent Model
  *
  * @property Game $Game
- * @property Plugin $Plugin
  */
-class GamesPlugin extends AppModel {
+class GameComponent extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'name';
 
 /**
  * Validation rules
@@ -26,7 +30,7 @@ class GamesPlugin extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'plugin_id' => array(
+		'component_type' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -36,9 +40,19 @@ class GamesPlugin extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'inherent' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
+		'name' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'quantity' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -62,13 +76,11 @@ class GamesPlugin extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Plugin' => array(
-			'className' => 'Plugin',
-			'foreignKey' => 'plugin_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
 		)
 	);
+
+	/**
+	 * コンポーネントタイプ：カード
+	 */
+	const COMPONENT_TYPE_CARD = 1;
 }

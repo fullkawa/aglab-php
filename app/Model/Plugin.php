@@ -1,6 +1,8 @@
 <?php
 App::uses('AppModel', 'Model');
+
 /**
+ * @deprecated
  * Plugin Model
  *
  * @property Game $Game

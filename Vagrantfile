@@ -68,7 +68,13 @@ then
 else
   composer install
 fi
+
+cd app
+
+php -q Console/cake.php -working /vagrant/app Migrations.migration run all
+
 SCRIPT
+
   config.vm.provision "shell", inline: $script
 
   # Enable provisioning with CFEngine. CFEngine Community packages are
