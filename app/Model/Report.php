@@ -1,10 +1,10 @@
 <?php
 
 /**
- * プレイレポート
+ * レポート定義
  *
- * Reportモデルは基本的な情報を集計する。
- * ゲーム固有の情報はこのモデルを継承したクラスの方で定義する。
+ * 本モデルでは、レポートとして集計する項目およびその方法を定義する。
+ * レポート定義は1ゲームにつき1つだが、それから作成されるレポートはテストプレイごとに1つである。
  *
  * @author fullkawa
  */
@@ -18,19 +18,14 @@ class Report extends AppModel {
 	 * @var array
 	 */
 	public $belongsTo = array(
-			'Testplay' => array(
-					'className' => 'Testplay',
-					'foreignKey' => 'testplay_id',
+			'Game' => array(
+					'className' => 'Game',
+					'foreignKey' => 'game_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''
 			)
 	);
-
-	/**
-	 * レポートのフォーマット
-	 */
-	public $format = array();
 
 	/**
 	 * レポートを作成する

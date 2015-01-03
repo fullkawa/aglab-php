@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+
 /**
  * プレイ
  *
@@ -79,10 +80,10 @@ class Play extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'PlayCondition' => array(
-			'className' => 'PlayCondition',
+		'PlayData' => array(
+			'className' => 'PlayData',
 			'foreignKey' => 'play_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -95,7 +96,7 @@ class Play extends AppModel {
 		'PlayHistory' => array(
 			'className' => 'PlayHistory',
 			'foreignKey' => 'play_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

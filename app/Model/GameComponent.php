@@ -1,7 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
+
 /**
- * GameComponent Model
+ * コンポーネント定義
+ *
+ * このモデルは主に、Contextにカード等の情報を追加する際のテンプレートとして
  *
  * @property Game $Game
  */

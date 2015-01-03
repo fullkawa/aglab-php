@@ -1,8 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
+
 /**
+ * プレイ履歴
+ *
  * TODO: きっとKeyValueストアで保持するのが適切なはず
- * ヒストリ
  *
  * ゲームプレイ中の各ステップ(プレイの最小単位)の状態を保持する。
  *
@@ -10,6 +12,9 @@ App::uses('AppModel', 'Model');
  */
 class PlayHistory extends AppModel {
 
+	/*
+	 * あれ？なんでこれTreeにしたんだっけ？分岐を追うため？
+	 */
 	public $actsAs = array('Tree');
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

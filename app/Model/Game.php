@@ -2,8 +2,9 @@
 App::uses('AppModel', 'Model');
 
 /**
- * ゲーム
+ * ゲーム定義
  *
+ * 本モデルでは、ゲームに関する基本情報を定義する。
  * 本フレームワークにおけるゲームとは、終了条件を満たすまでルールを適用し続けることである。
  *
  * @author fullkawa
@@ -38,15 +39,36 @@ class Game extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * hasOne associations
+ *
+ * @var array
+ */
+	public $hasOne = array(
+		'Report' => array(
+			'className' => 'Report',
+			'foreignKey' => 'game_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+/**
  * hasMany associations
  *
  * @var array
  */
 	public $hasMany = array(
-		'Play' => array(
-			'className' => 'Play',
+		'Testplay' => array(
+			'className' => 'Testplay',
 			'foreignKey' => 'game_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
