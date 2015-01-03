@@ -106,3 +106,8 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+/**
+ * 本システムの設定値ファイルを読み込む
+ */
+require APP . 'Config' . DS . 'ini.php';
