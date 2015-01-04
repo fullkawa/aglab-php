@@ -20,17 +20,31 @@ class Context extends AppModel {
 	 *   <dt>step</dt><dd>実行ステップ数</dd>
 	 *   <dt>stage</dt><dd>ステージ。標準的なゲームのステージは、setup/play/ending に分かれる。</dd>
 	 *   <dt>events</dt><dd>[array] 発生したイベントはこの配列に追加される。</dd>
-	 *   <dt>players</dt><dd></dd>
+	 *   <dt>players</dt><dd>プレイヤー</dd>
 	 *   <dt></dt><dd></dd>
 	 * </dl>
+	 *
+	 * @param array $params
+	 * <ul>
+	 *   <li>num_of_players(int): プレイ人数</li>
+	 *   <li></li>
+	 * </ul>
+	 *
+	 * @return array
 	 */
 	public static function get($params = array()) {
 		$context = array(
-			'step' => 0,
-			'stage' => '',
-			'events' => array(),
-			'players' => array(),
+			'step'	=> 0,
+			'stage'	=> '',
+			'events'	=> array(),
+			'players'	=> array(),
 		);
+		if (@is_numeric($params['num_of_players'])) {
+			for ($i=0; $i<$params['num_of_players']; $i++) {
+				$pl_context = self::_getPlayersContext();
+				$context['players'][] = $pl_context;
+			}
+		}
 		return $context;
 	}
 
@@ -45,9 +59,12 @@ class Context extends AppModel {
 	 */
 	public static function _getPlayersContext() {
 		$context = array(
-			'name' => '',
-			'actions' => array(),
-			'selected_action' => '',
+			'name'	=> '',
+			'algorithm'	=> null,
+			'actions'	=> array(),
+			'selected-action'	=> null,
+			'prev-player'	=> null,
+			'next-player'	=> null,
 		);
 		return $context;
 	}

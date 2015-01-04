@@ -38,6 +38,7 @@ class LostLegacyRules extends Object {
 	 * @return array
 	 */
 	public function intendedGirlOfFate($context, $target_path) {
+		// if (Event::raised('checked_sneak-attack-*', $context)) と書きたい。
 		if (array_key_exists('onchecked_sneak_attack', $context['events'])) {
 			$this->log("intended 'Girl of fate'", LOG_INFO);
 
