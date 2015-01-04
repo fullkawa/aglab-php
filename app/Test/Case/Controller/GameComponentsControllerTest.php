@@ -16,7 +16,6 @@ class GameComponentsControllerTest extends ControllerTestCase {
 		'app.game_component',
 		'app.game',
 		'app.play',
-		'app.play_condition',
 		'app.play_history'
 	);
 

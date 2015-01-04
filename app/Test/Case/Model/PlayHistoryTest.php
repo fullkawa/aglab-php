@@ -16,7 +16,6 @@ class PlayHistoryTest extends CakeTestCase {
 		'app.play_history',
 		'app.play',
 		'app.game',
-		'app.play_condition'
 	);
 
 /**

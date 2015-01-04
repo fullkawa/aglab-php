@@ -15,7 +15,6 @@ class PlaysControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.play',
 		'app.game',
-		'app.play_condition'
 	);
 
 /**

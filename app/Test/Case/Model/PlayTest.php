@@ -15,7 +15,6 @@ class PlayTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.play',
 		'app.game',
-		'app.play_condition'
 	);
 
 /**

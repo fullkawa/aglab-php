@@ -13,7 +13,6 @@ class RulesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.rule'
 	);
 
 /**

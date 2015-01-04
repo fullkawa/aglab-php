@@ -16,7 +16,6 @@ class TestplayTest extends CakeTestCase {
 		'app.testplay',
 		'app.game',
 		'app.play',
-		'app.play_condition'
 	);
 
 /**
