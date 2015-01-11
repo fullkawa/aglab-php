@@ -40,7 +40,17 @@ class PlayDataTest extends CakeTestCase {
 		parent::tearDown();
 	}
 
-	public function testRecord() {
-		$this->markTestIncomplete('Not Implemented.');
+	/**
+	 * ディメンジョン項目取得テスト
+	 */
+	public function test_getItems() {
+		$context = array(
+			'players' => array(array(), array())
+		);
+		$items = $this->PlayData->_getItems($context);
+
+		$this->assertEquals(5, count($items));
+		$this->assertEquals('2P', $items[0]);
+		$this->assertEquals(null, $items[4]);
 	}
 }
