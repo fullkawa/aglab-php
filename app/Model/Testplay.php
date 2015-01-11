@@ -73,7 +73,7 @@ class Testplay extends AppModel {
 	public $hasMany = array(
 			'Play' => array(
 					'className' => 'Play',
-					'foreignKey' => 'game_id',
+					'foreignKey' => 'testplay_id',
 					'dependent' => true,
 					'conditions' => '',
 					'fields' => '',

@@ -39,7 +39,10 @@ class TestplayTest extends CakeTestCase {
 		parent::tearDown();
 	}
 
+	/**
+	 * テスト
+	 */
 	public function test() {
-		$this->markTestIncomplete('Not Implemented.');
+		$this->markTestIncomplete('Not Implemented');
 	}
 }

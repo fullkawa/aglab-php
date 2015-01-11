@@ -40,7 +40,7 @@ class PlayDataTest extends CakeTestCase {
 		parent::tearDown();
 	}
 
-	public function test() {
+	public function testRecord() {
 		$this->markTestIncomplete('Not Implemented.');
 	}
 }
