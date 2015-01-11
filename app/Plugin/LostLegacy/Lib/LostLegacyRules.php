@@ -287,4 +287,17 @@ class LostLegacyRules extends Object {
 		);
 		return $context;
 	}
+	
+	/**
+	 * ゲーム終了時
+	 * 
+	 * @param array $context コンテキスト
+	 */
+	public function _onEnding($context) {
+		$this->PlayData = ClassRegistry::init('PlayData', true);
+		
+		foreach ($context['players'] as $player) {
+			$this->PlayData->record($context, 'num_draw', $player['num-draw'], $player['name']);
+		}
+	}
 }
