@@ -26,6 +26,8 @@ class Context extends AppModel {
 	 *
 	 * @param array $params
 	 * <ul>
+	 *   <li>testplay_id(int): テストプレイID</li>
+	 *   <li>play_id(int): プレイID</li>
 	 *   <li>num_of_players(int): プレイ人数</li>
 	 *   <li></li>
 	 * </ul>
@@ -34,6 +36,8 @@ class Context extends AppModel {
 	 */
 	public static function get($params = array()) {
 		$context = array(
+			'testplay_id' => $params['testplay_id'],
+			'play_id' => $params['play_id'],
 			'step'	=> 0,
 			'stage'	=> '',
 			'events'	=> array(),

@@ -87,8 +87,8 @@ class PlayData extends AppModel {
 	public function record($context, $key, $value, $label = null, $detail = null) {
 		$items = $this->_getItems($context);
 		$data = array(
-			'testplay_id'	=> $testplay_id,
-			'play_id'	=> $play_id,
+			'testplay_id'	=> $context['testplay_id'],
+			'play_id'	=> $context['play_id'],
 			'item1'		=> $items[0],
 			'item2'		=> $items[1],
 			'item3'		=> $items[2],
