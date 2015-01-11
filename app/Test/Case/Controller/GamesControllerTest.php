@@ -13,7 +13,12 @@ class GamesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.game'
+		'app.game',
+		'app.testplay',
+		'app.report',
+		'app.play',
+		'app.play_data',
+		'app.play_history'
 	);
 
 /**

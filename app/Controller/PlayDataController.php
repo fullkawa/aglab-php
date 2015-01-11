@@ -1,13 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * PlayDatas Controller
+ * PlayData Controller
  *
  * @property PlayData $PlayData
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
-class PlayDatasController extends AppController {
+class PlayDataController extends AppController {
 
 /**
  * Components

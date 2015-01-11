@@ -6,7 +6,10 @@ App::uses('AppModel', 'Model');
  *
  * このモデルに登録された情報を元に自動/手動でテストプレイが行われる。
  *
- * @property Game $Game
+ * @property Play
+ * @property Report
+ *
+ * @author fullkawa
  */
 class Testplay extends AppModel {
 
@@ -66,24 +69,37 @@ class Testplay extends AppModel {
 	);
 
 /**
+ * hasOne associations
+ *
+ * @var array
+ */
+	public $hasOne = array(
+		'Report' => array(
+			'className' => 'Report',
+			'foreignKey' => 'testplay_id',
+			'dependent' => true,
+		)
+	);
+
+/**
  * hasMany associations
  *
  * @var array
  */
 	public $hasMany = array(
-			'Play' => array(
-					'className' => 'Play',
-					'foreignKey' => 'testplay_id',
-					'dependent' => true,
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'exclusive' => '',
-					'finderQuery' => '',
-					'counterQuery' => ''
-			)
+		'Play' => array(
+			'className' => 'Play',
+			'foreignKey' => 'testplay_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 
 	/**

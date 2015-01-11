@@ -7,6 +7,11 @@ App::uses('AppModel', 'Model');
  * 本モデルでは、ゲームに関する基本情報を定義する。
  * 本フレームワークにおけるゲームとは、終了条件を満たすまでルールを適用し続けることである。
  *
+ * @property Rule
+ * @property GameComponent
+ * @property Testplay
+ * @property ReportItem
+ *
  * @author fullkawa
  */
 class Game extends AppModel {
@@ -34,30 +39,14 @@ class Game extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'name' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+			),
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * hasOne associations
- *
- * @var array
- */
-	public $hasOne = array(
-		'Report' => array(
-			'className' => 'Report',
-			'foreignKey' => 'game_id',
-			'dependent' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
 
 /**
  * hasMany associations
@@ -77,7 +66,7 @@ class Game extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
 	);
 
 	/**
@@ -85,10 +74,12 @@ class Game extends AppModel {
 	 * @see Contextモデル
 	 * コンテキスト(ゲーム内の各種ステータス)
 	 * @var array
-	 */
+	 *
 	protected $context = array();
+	 */
 
 	/**
+	 * @deprecated
 	 * ゲームを初期状態にする
 	 *
 	 * @param array $params パラメータ
@@ -97,25 +88,29 @@ class Game extends AppModel {
 	 * </p>
 	 *
 	 * @return string $play_id プレイID
-	*/
+	 *
 	public function setup($params) {
 
 		return $play_id;
 	}
+	 */
 
 	/**
+	 * @deprecated
 	 * ゲームを開始する
 	 *
 	 * @param stirng $play_id プレイID
 	 * @return array $report プレイ結果(レポート)
-	 */
+	 *
 	public function start() {
 		$report = array();
 
 		return $report;
 	}
+	 */
 
 	/**
+	 * @deprecated
 	 * 自動テストプレイを行う
 	 *
 	 * @param array $params パラメータ
@@ -124,7 +119,7 @@ class Game extends AppModel {
 	 * </p>
 	 *
 	 * @return array $report テストプレイ結果(レポート)
-	 */
+	 *
 	public function autoplay() {
 		$report = array();
 
@@ -135,5 +130,6 @@ class Game extends AppModel {
 
 		return $report;
 	}
+	 */
 
 }

@@ -4,9 +4,9 @@ App::uses('AppModel', 'Model');
 /**
  * コンポーネント定義
  *
- * このモデルは主に、Contextにカード等の情報を追加する際のテンプレートとして
+ * このモデルは、Contextにカード等の情報を追加する際のテンプレートとして利用される。
  *
- * @property Game $Game
+ * @author fullkawa
  */
 class GameComponent extends AppModel {
 

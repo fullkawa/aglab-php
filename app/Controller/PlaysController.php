@@ -3,8 +3,6 @@ App::uses('AppController', 'Controller');
 /**
  * Plays Controller
  *
- * MODIFIED -> add
- *
  * @property Play $Play
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
@@ -51,16 +49,15 @@ class PlaysController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Play->create();
-			if ($result = $this->Play->save($this->request->data)) {
+			if ($this->Play->save($this->request->data)) {
 				$this->Session->setFlash(__('The play has been saved.'));
-				$id = $result['Play']['id'];
-				return $this->redirect(array('action' => 'view', $id));
+				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The play could not be saved. Please, try again.'));
 			}
 		}
-		$games = $this->Play->Game->find('list');
-		$this->set(compact('games'));
+		$testplays = $this->Play->Testplay->find('list');
+		$this->set(compact('testplays'));
 	}
 
 /**
@@ -85,8 +82,8 @@ class PlaysController extends AppController {
 			$options = array('conditions' => array('Play.' . $this->Play->primaryKey => $id));
 			$this->request->data = $this->Play->find('first', $options);
 		}
-		$games = $this->Play->Game->find('list');
-		$this->set(compact('games'));
+		$testplays = $this->Play->Testplay->find('list');
+		$this->set(compact('testplays'));
 	}
 
 /**

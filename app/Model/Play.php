@@ -4,8 +4,10 @@ App::uses('AppModel', 'Model');
 /**
  * プレイ
  *
- * @property Game $Game
- * @property PlayCondition $PlayCondition
+ * @property PlayHistory
+ * @property PlayData
+ *
+ * @author fullkawa
  */
 class Play extends AppModel {
 
@@ -25,7 +27,7 @@ class Play extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'play_type' => array(
+		'type' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -45,7 +47,7 @@ class Play extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'num_plays' => array(
+		'num_players' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -65,9 +67,9 @@ class Play extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Game' => array(
-			'className' => 'Game',
-			'foreignKey' => 'game_id',
+		'Testplay' => array(
+			'className' => 'Testplay',
+			'foreignKey' => 'testplay_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

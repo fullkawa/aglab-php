@@ -6,6 +6,11 @@
 			<?php echo h($playData['PlayData']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Testplay Id'); ?></dt>
+		<dd>
+			<?php echo h($playData['PlayData']['testplay_id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Play'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($playData['Play']['id'], array('controller' => 'plays', 'action' => 'view', $playData['Play']['id'])); ?>
@@ -36,9 +41,24 @@
 			<?php echo h($playData['PlayData']['item5']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Key'); ?></dt>
+		<dd>
+			<?php echo h($playData['PlayData']['key']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Label'); ?></dt>
+		<dd>
+			<?php echo h($playData['PlayData']['label']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Value'); ?></dt>
 		<dd>
 			<?php echo h($playData['PlayData']['value']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Detail'); ?></dt>
+		<dd>
+			<?php echo h($playData['PlayData']['detail']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>

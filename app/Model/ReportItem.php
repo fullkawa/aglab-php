@@ -18,13 +18,13 @@ class ReportItem extends AppModel {
 	 * @var array
 	 */
 	public $belongsTo = array(
-			'Game' => array(
-					'className' => 'Game',
-					'foreignKey' => 'game_id',
-					'conditions' => '',
-					'fields' => '',
-					'order' => ''
-			)
+		'Game' => array(
+			'className' => 'Game',
+			'foreignKey' => 'game_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
 	);
 
 	/**

@@ -4,16 +4,15 @@ App::uses('AppModel', 'Model');
 /**
  * プレイ履歴
  *
+ * ゲームプレイ中の各ステップ(プレイの最小単位)の状態を保持する。
  * TODO: きっとKeyValueストアで保持するのが適切なはず
  *
- * ゲームプレイ中の各ステップ(プレイの最小単位)の状態を保持する。
- *
- * @property Play $Play
+ * @author fullkawa
  */
 class PlayHistory extends AppModel {
 
 	/*
-	 * あれ？なんでこれTreeにしたんだっけ？分岐を追うため？
+	 * FIXME: あれ？なんでこれTreeにしたんだっけ？分岐を追うため？
 	 */
 	public $actsAs = array('Tree');
 

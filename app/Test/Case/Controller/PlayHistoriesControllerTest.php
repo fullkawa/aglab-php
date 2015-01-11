@@ -1,11 +1,11 @@
 <?php
-App::uses('PlaysController', 'Controller');
+App::uses('PlayHistoriesController', 'Controller');
 
 /**
- * PlaysController Test Case
+ * PlayHistoriesController Test Case
  *
  */
-class PlaysControllerTest extends ControllerTestCase {
+class PlayHistoriesControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,12 +13,12 @@ class PlaysControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'app.play_history',
 		'app.play',
 		'app.testplay',
 		'app.game',
 		'app.report',
-		'app.play_data',
-		'app.play_history'
+		'app.play_data'
 	);
 
 /**

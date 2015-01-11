@@ -4,13 +4,17 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('testplay_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('play_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('item1'); ?></th>
 			<th><?php echo $this->Paginator->sort('item2'); ?></th>
 			<th><?php echo $this->Paginator->sort('item3'); ?></th>
 			<th><?php echo $this->Paginator->sort('item4'); ?></th>
 			<th><?php echo $this->Paginator->sort('item5'); ?></th>
+			<th><?php echo $this->Paginator->sort('key'); ?></th>
+			<th><?php echo $this->Paginator->sort('label'); ?></th>
 			<th><?php echo $this->Paginator->sort('value'); ?></th>
+			<th><?php echo $this->Paginator->sort('detail'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('updated'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -20,6 +24,7 @@
 	<?php foreach ($playData as $playData): ?>
 	<tr>
 		<td><?php echo h($playData['PlayData']['id']); ?>&nbsp;</td>
+		<td><?php echo h($playData['PlayData']['testplay_id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($playData['Play']['id'], array('controller' => 'plays', 'action' => 'view', $playData['Play']['id'])); ?>
 		</td>
@@ -28,7 +33,10 @@
 		<td><?php echo h($playData['PlayData']['item3']); ?>&nbsp;</td>
 		<td><?php echo h($playData['PlayData']['item4']); ?>&nbsp;</td>
 		<td><?php echo h($playData['PlayData']['item5']); ?>&nbsp;</td>
+		<td><?php echo h($playData['PlayData']['key']); ?>&nbsp;</td>
+		<td><?php echo h($playData['PlayData']['label']); ?>&nbsp;</td>
 		<td><?php echo h($playData['PlayData']['value']); ?>&nbsp;</td>
+		<td><?php echo h($playData['PlayData']['detail']); ?>&nbsp;</td>
 		<td><?php echo h($playData['PlayData']['created']); ?>&nbsp;</td>
 		<td><?php echo h($playData['PlayData']['updated']); ?>&nbsp;</td>
 		<td class="actions">

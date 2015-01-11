@@ -2,18 +2,13 @@
 App::uses('AppModel', 'Model');
 
 /**
- * PlayData Model
+ * プレイデータ
  *
- * @property Play $Play
+ * レポートで集計されるためのデータ
+ *
+ * @author fullkawa
  */
 class PlayData extends AppModel {
-
-/**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'play_datas';
 
 /**
  * Validation rules
@@ -30,6 +25,16 @@ class PlayData extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'key' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+			)
+		),
+		'value' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+			)
 		),
 	);
 

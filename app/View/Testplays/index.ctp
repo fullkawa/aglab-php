@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort('type'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('num_plays'); ?></th>
+			<th><?php echo $this->Paginator->sort('conditions'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('updated'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -23,6 +24,7 @@
 		<td><?php echo h($testplay['Testplay']['type']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['status']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['num_plays']); ?>&nbsp;</td>
+		<td><?php echo h($testplay['Testplay']['conditions']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['created']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['updated']); ?>&nbsp;</td>
 		<td class="actions">
@@ -56,5 +58,7 @@
 		<li><?php echo $this->Html->link(__('New Game'), array('controller' => 'games', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Reports'), array('controller' => 'reports', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Report'), array('controller' => 'reports', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Plays'), array('controller' => 'plays', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Play'), array('controller' => 'plays', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

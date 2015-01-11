@@ -15,7 +15,10 @@ class GameComponentsControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.game_component',
 		'app.game',
+		'app.testplay',
+		'app.report',
 		'app.play',
+		'app.play_data',
 		'app.play_history'
 	);
 

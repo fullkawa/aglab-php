@@ -15,7 +15,9 @@ class PlayDataControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.play_data',
 		'app.play',
+		'app.testplay',
 		'app.game',
+		'app.report',
 		'app.play_history'
 	);
 

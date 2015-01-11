@@ -3,13 +3,17 @@
 	<fieldset>
 		<legend><?php echo __('Add Play Data'); ?></legend>
 	<?php
+		echo $this->Form->input('testplay_id');
 		echo $this->Form->input('play_id');
 		echo $this->Form->input('item1');
 		echo $this->Form->input('item2');
 		echo $this->Form->input('item3');
 		echo $this->Form->input('item4');
 		echo $this->Form->input('item5');
+		echo $this->Form->input('key');
+		echo $this->Form->input('label');
 		echo $this->Form->input('value');
+		echo $this->Form->input('detail');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
