@@ -214,16 +214,14 @@ class Testplay extends AppModel {
 	/**
 	 * テストプレイデータからプレイデータを作成する
 	 *
-	 * @param integer $id 作成元となるテストプレイ情報のID
+	 * @param array $testplay 作成元となるテストプレイ情報
 	 * @return multitype: Play.saveAll()で保存されるデータ
 	 */
-	public function makePlays($id) {
+	public function makePlays($testplay) {
 		$plannerClassName = Configure::read('PlannerClassName');
 		$plannerPackageName = Configure::read('PlannerPackageName');
 		App::uses($plannerClassName, $plannerPackageName);
 		$this->Planner = new $plannerClassName;
-
-		$testplay = $this->findById($id);
 		$plays = $this->Planner->getPlans($testplay);
 		return $plays;
 	}
