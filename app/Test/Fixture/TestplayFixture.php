@@ -12,16 +12,29 @@ class TestplayFixture extends CakeTestFixture {
  *
  * @var array
  */
-	public $records = array(
-		array(
-			'id' => 1,
-			'game_id' => 1,
-			'type' => 1,
-			'num_plays' => 10,
-			'conditions' => 'a:2:{s:11:"min_players";i:2;s:11:"max_players";i:4;}',
-			'created' => '2014-11-17 20:59:42',
-			'updated' => '2014-11-17 20:59:42'
-		),
-	);
+	public function init() {
+		parent::init();
+
+		$conditions1 = array(
+			'algorithms' => array(
+				'Common.Lib/PlayingAlgorithm/Randomizer' => 3,
+				'LostLegacy.Lib/PlayingAlgorithm/LowPlayer' => 1,
+				'LostLegacy.Lib/PlayingAlgorithm/HighPlayer' => 1,
+			)
+		);
+		$this->records = array(
+			array(
+				'id' => 1,
+				'game_id' => 1,
+				'type' => 1,
+				'num_plays' => 10,
+				'min_players' => 2,
+				'max_players' => 4,
+				'conditions' => serialize($conditions1),
+				'created' => date('Y-m-d H:i:s'),
+				'updated' => date('Y-m-d H:i:s'),
+			),
+		);
+	}
 
 }

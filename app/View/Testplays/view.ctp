@@ -26,6 +26,16 @@
 			<?php echo h($testplay['Testplay']['num_plays']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Min Players'); ?></dt>
+		<dd>
+			<?php echo h($testplay['Testplay']['min_players']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Max Players'); ?></dt>
+		<dd>
+			<?php echo h($testplay['Testplay']['max_players']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Conditions'); ?></dt>
 		<dd>
 			<?php echo h($testplay['Testplay']['conditions']); ?>
@@ -100,6 +110,7 @@
 		<th><?php echo __('Type'); ?></th>
 		<th><?php echo __('Status'); ?></th>
 		<th><?php echo __('Num Players'); ?></th>
+		<th><?php echo __('Conditions'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Updated'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -111,6 +122,7 @@
 			<td><?php echo $play['type']; ?></td>
 			<td><?php echo $play['status']; ?></td>
 			<td><?php echo $play['num_players']; ?></td>
+			<td><?php echo $play['conditions']; ?></td>
 			<td><?php echo $play['created']; ?></td>
 			<td><?php echo $play['updated']; ?></td>
 			<td class="actions">

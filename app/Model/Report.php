@@ -39,11 +39,18 @@ class Report extends AppModel {
 			'label' => '試行回数',
 			'count' => intval($testplay['Testplay']['num_plays'])
 		);
+		$condition['min_players'] = array(
+				'label' => '最小プレイ人数',
+				'count' => intval($testplay['Testplay']['min_players'])
+		);
+		$condition['max_players'] = array(
+				'label' => '最大プレイ人数',
+				'count' => intval($testplay['Testplay']['max_players'])
+		);
 
-		$test_cond = unserialize($testplay['Testplay']['conditions']);
+		$test_cond = $testplay['Testplay']['conditions'];
 		$items = array(
-			array('key' => 'min_players', 'label' => '最小プレイ人数'),
-			array('key' => 'max_players', 'label' => '最大プレイ人数'),
+			// TODO: 表示対象とするテスト条件を定義する
 		);
 		foreach ($items as $item) {
 			$key = $item['key'];

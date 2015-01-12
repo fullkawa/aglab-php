@@ -133,6 +133,28 @@ class Testplay extends AppModel {
 	 */
 	const STATUS_DONE = 9;
 
+	public function beforeSave($options = array()) {
+		if (!parent::beforeSave($options)) {
+			return false;
+		}
+
+		if (@$this->data['conditions']) {
+			$this->data['conditions'] = serialize($this->data['conditions']);
+		}
+		return true;
+	}
+
+	public function afterFind($results, $primary = false) {
+		parent::afterFind($results, $primary);
+
+		foreach ($results as &$result) {
+			if (@$result['Testplay']['conditions']) {
+				$result['Testplay']['conditions'] = unserialize($result['Testplay']['conditions']);
+			}
+		}
+		return $results;
+	}
+
 	/**
 	 * 未実行の自動テストプレイデータ(一件のみ)を取得する
 	 */
@@ -193,7 +215,7 @@ class Testplay extends AppModel {
 	 * テストプレイデータからプレイデータを作成する
 	 *
 	 * @param integer $id 作成元となるテストプレイ情報のID
-	 * @return multitype: saveAll()で保存できるフォーマットで
+	 * @return multitype: Play.saveAll()で保存されるデータ
 	 */
 	public function makePlays($id) {
 		$plannerClassName = Configure::read('PlannerClassName');
@@ -202,14 +224,7 @@ class Testplay extends AppModel {
 		$this->Planner = new $plannerClassName;
 
 		$testplay = $this->findById($id);
-		$num_trials = $testplay['Testplay']['num_plays'];
-		$conditions = array(
-			'game_id'	=> $testplay['Game']['id'],
-			'testplay_id'	=> $id,
-			'type'			=> 1, // FIXME: Play.type ?
-			'num_players'	=> 6,
-		);
-		$plays = $this->Planner->getPlans($num_trials, $conditions);
+		$plays = $this->Planner->getPlans($testplay);
 		return $plays;
 	}
 

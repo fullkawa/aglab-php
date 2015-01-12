@@ -8,7 +8,9 @@ class ContextTest extends CakeTestCase {
 	 */
 	public function testGet2P() {
 		$params = array(
-			'num_of_players' => 2
+			'testplay_id' => 1,
+			'play_id' => 2,
+			'num_players' => 2
 		);
 		$context = Context::get($params);
 

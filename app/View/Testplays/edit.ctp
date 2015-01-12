@@ -8,6 +8,8 @@
 		echo $this->Form->input('type');
 		echo $this->Form->input('status');
 		echo $this->Form->input('num_plays');
+		echo $this->Form->input('min_players');
+		echo $this->Form->input('max_players');
 		echo $this->Form->input('conditions');
 	?>
 	</fieldset>

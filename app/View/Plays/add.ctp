@@ -7,6 +7,7 @@
 		echo $this->Form->input('type');
 		echo $this->Form->input('status');
 		echo $this->Form->input('num_players');
+		echo $this->Form->input('conditions');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

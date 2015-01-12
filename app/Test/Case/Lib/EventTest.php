@@ -7,7 +7,12 @@ class EventTest extends CakeTestCase {
 	private $context = array();
 
 	public function setUp() {
-		$this->context = Context::get();
+		$params = array(
+			'testplay_id' => 1,
+			'play_id' => 2,
+			'num_players' => 3,
+		);
+		$this->context = Context::get($params);
 	}
 
 	/**

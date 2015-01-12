@@ -43,8 +43,8 @@ class Context extends AppModel {
 			'events'	=> array(),
 			'players'	=> array(),
 		);
-		if (@is_numeric($params['num_of_players'])) {
-			for ($i=0; $i<$params['num_of_players']; $i++) {
+		if (@is_numeric($params['num_players'])) {
+			for ($i=0; $i<$params['num_players']; $i++) {
 				$pl_context = self::_getPlayersContext();
 				$context['players'][] = $pl_context;
 			}

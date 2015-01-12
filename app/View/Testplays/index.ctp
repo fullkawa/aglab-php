@@ -8,6 +8,8 @@
 			<th><?php echo $this->Paginator->sort('type'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('num_plays'); ?></th>
+			<th><?php echo $this->Paginator->sort('min_players'); ?></th>
+			<th><?php echo $this->Paginator->sort('max_players'); ?></th>
 			<th><?php echo $this->Paginator->sort('conditions'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('updated'); ?></th>
@@ -24,6 +26,8 @@
 		<td><?php echo h($testplay['Testplay']['type']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['status']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['num_plays']); ?>&nbsp;</td>
+		<td><?php echo h($testplay['Testplay']['min_players']); ?>&nbsp;</td>
+		<td><?php echo h($testplay['Testplay']['max_players']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['conditions']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['created']); ?>&nbsp;</td>
 		<td><?php echo h($testplay['Testplay']['updated']); ?>&nbsp;</td>

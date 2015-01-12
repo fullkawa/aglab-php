@@ -133,7 +133,13 @@ class Play extends AppModel {
 	const STATUS_DONE = 9;
 
 	public function beforeSave($options = array()) {
-		$this->log("[Play::beforeSave()] now", LOG_DEBUG);
+		if (!parent::beforeSave($options)) {
+			return false;
+		}
+
+		if (@$this->data['Play']['conditions']) {
+			$this->data['Play']['conditions'] = serialize($this->data['Play']['conditions']);
+		}
 		return true;
 	}
 

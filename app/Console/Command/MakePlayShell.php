@@ -18,17 +18,19 @@ class MakePlayShell extends AppShell {
 
 		if (empty($testplay)) {
 			// 対象データがなければバッチ終了
+			$this->log('[MakePlayShell] 未実行のテストプレイデータはありません。', LOG_INFO);
 			return;
 		}
 
 		$testplay_id = $testplay['Testplay']['id'];
 
 		$this->Testplay->changeStatus($testplay_id, Testplay::STATUS_MAKING_PLAY);
-		$this->log("[MakePlayShell] Start to make play datas. id: " . $testplay_id, LOG_INFO);
+		$this->log("[MakePlayShell] テストプレイID:{$testplay_id}を開始します。", LOG_INFO);
 
 		$plays = $this->Testplay->makePlays($testplay_id);
 		foreach ($plays as &$play) {
 			$context = array(
+				'testplay_id' => $testplay_id,
 				'stage' => 'setup',
 				'num_players' => $play['num_players']
 			);
@@ -45,7 +47,7 @@ class MakePlayShell extends AppShell {
 		}
 
 		$num = count($plays);
-		$this->log("自動テストプレイを${num}件投入しました。", LOG_INFO);
+		$this->log("[MakePlayShell] 自動テストプレイを${num}件投入しました。", LOG_INFO);
 
 		$this->Testplay->changeStatus($testplay_id, Testplay::STATUS_ON_PLAY);
 		$this->log("[MakePlayShell] Start to play.", LOG_INFO);

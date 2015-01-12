@@ -26,6 +26,11 @@
 			<?php echo h($play['Play']['num_players']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Conditions'); ?></dt>
+		<dd>
+			<?php echo h($play['Play']['conditions']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($play['Play']['created']); ?>

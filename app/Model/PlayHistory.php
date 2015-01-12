@@ -44,9 +44,7 @@ class PlayHistory extends AppModel {
 	const STATUS_EXECUTED = 9;
 
 	public function beforeSave($options = array()) {
-		$this->log("[PlayHistory::beforeSave()] now", LOG_DEBUG);
-		if (!parent::beforeSave()) {
-			$this->log("[PlayHistory::beforeSave()] parent::beforeSave() is failed.", LOG_WARNING);
+		if (!parent::beforeSave($options)) {
 			return false;
 		}
 
