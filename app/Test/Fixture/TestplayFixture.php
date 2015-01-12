@@ -20,8 +20,9 @@ class TestplayFixture extends CakeTestFixture {
 				'Common.Lib/PlayingAlgorithm/Randomizer' => 3,
 				'LostLegacy.Lib/PlayingAlgorithm/LowPlayer' => 1,
 				'LostLegacy.Lib/PlayingAlgorithm/HighPlayer' => 1,
-			)
+			),
 		);
+		//debug(serialize($conditions1));
 		$this->records = array(
 			array(
 				'id' => 1,

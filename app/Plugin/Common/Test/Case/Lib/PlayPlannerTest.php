@@ -39,52 +39,10 @@ Class PlayPlannerTest extends CakeTestCase {
 	}
 
 	/**
-	 * テスト条件生成テスト
+	 * EvenNumberList生成テスト
 	 */
-	public function testBuildEvenConditions() {
-		$conditions = array(
-			'cond1' => array(
-				'value1-1' => 1, 'value1-2' => 1,
-			),
-			'cond2' => array(
-				array('from' => 1, 'to' => 3)
-			),
-			'cond3' => array(
-				'value3-1' => 3, 'value3-2' => 1, 'value3-3' => 1,
-			),
-		);
-		$conditionList = $this->Planner->buildEvenConditions($conditions);
-		debug($conditionList);
-
-		$this->assertEquals(5, count($conditionList));
-
-		$chktable = array();
-		foreach ($conditionList as $conditions) {
-			foreach ($conditions as $value) {
-				if (empty($chktable[$value])) {
-					$chktable[$value] = 1;
-				} else {
-					$chktable[$value] = $chktable[$value] + 1;
-				}
-			}
-		}
-		ksort($chktable);
-		debug($chktable);
-		$this->assertGreaterThanOrEqual(2, $chktable['value1-1']);
-		$this->assertGreaterThanOrEqual(2, $chktable['value1-2']);
-		$this->assertLessThanOrEqual(2, $chktable['1']);
-		$this->assertLessThanOrEqual(2, $chktable['2']);
-		$this->assertLessThanOrEqual(2, $chktable['3']);
-		$this->assertEquals(3, $chktable['value3-1']);
-		$this->assertEquals(1, $chktable['value3-2']);
-		$this->assertEquals(1, $chktable['value3-3']);
-	}
-
-	/**
-	 * テストプレイ人数生成テスト
-	 */
-	public function testBuildEvenNumbers() {
-		$numbers = $this->Planner->buildEvenNumbers(2, 4);
+	public function testBuildEvenNumberList() {
+		$numbers = $this->Planner->buildEvenNumberList(2, 4);
 
 		$this->assertEquals(3, count($numbers));
 
@@ -97,10 +55,10 @@ Class PlayPlannerTest extends CakeTestCase {
 	}
 
 	/**
-	 * テスト条件リスト生成テスト
+	 * ItemList生成テスト
 	 */
-	public function testBuildList() {
-		$items = $this->Planner->buildList(array('item1' => 1, 'item2' => 2));
+	public function testBuildItemList() {
+		$items = $this->Planner->buildItemList(array('item1' => 1, 'item2' => 2));
 
 		$this->assertEquals(3, count($items));
 		$this->assertTrue(in_array('item1', $items));
