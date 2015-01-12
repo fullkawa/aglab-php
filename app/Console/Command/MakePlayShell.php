@@ -29,7 +29,15 @@ class MakePlayShell extends AppShell {
 
 		$plays = $this->Testplay->makePlays($testplay);
 		foreach ($plays as $play) {
-			$context = Context::get($play);
+			try {
+				$modelName = "{$testplay['Game']['name']}Context";
+				App::uses($modelName, "{$testplay['Game']['name']}.Model");
+				$context = $modelName::get($play);
+
+			} catch (Exception $e) {
+				$this->log("No {$modelName} class.", LOG_DEBUG);
+				$context = Context::get($play);
+			}
 			$data = array(
 				'Play' => $play,
 				'PlayHistory' => array(
