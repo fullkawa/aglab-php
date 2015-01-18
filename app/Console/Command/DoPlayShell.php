@@ -12,30 +12,30 @@ class DoPlayShell extends AppShell {
 	 */
 	public function main() {
 		try {
-			$this->PlayHistory = ClassRegistry::init('PlayHistory');
+			$this->Step = ClassRegistry::init('Step');
 
 			$num_exec = Configure::read('num_exec_histories');
 			$query = array(
-					'conditions' => array('PlayHistory.status' => PlayHistory::STATUS_NOT_EXECUTED),
+					'conditions' => array('Step.status' => Step::STATUS_NOT_EXECUTED),
 					'limit' => $num_exec,
 			);
-			$histories = $this->PlayHistory->find('all', $query);
+			$histories = $this->Step->find('all', $query);
 			if (count($histories) === 0) {
 				// 未処理のヒストリデータがなければバッチ終了
 				return;
 			}
 
 			foreach ($histories as $history) {
-				$next = $this->PlayHistory->next($history);
-				$output = '[DoPlayShell::main()] make play_history: ' . $next['PlayHistory']['id']
-				. ', from ' . $history['PlayHistory']['id'];
+				$next = $this->Step->next($history);
+				$output = '[DoPlayShell::main()] make play_history: ' . $next['Step']['id']
+				. ', from ' . $history['Step']['id'];
 				$this->log($output, LOG_DEBUG);
 
-				if ($next['PlayHistory']['status'] == PlayHistory::STATUS_EXECUTED) {
+				if ($next['Step']['status'] == Step::STATUS_EXECUTED) {
 					$this->Play = ClassRegistry::init('Play');
-					$this->Play->id = $next['PlayHistory']['play_id'];
+					$this->Play->id = $next['Step']['play_id'];
 					$this->Play->saveField('status', Play::STATUS_WAIT_FOR_REPORT);
-					$this->log("[DoPlayShell::main()] play:{$next['PlayHistory']['play_id']} done.", LOG_INFO);
+					$this->log("[DoPlayShell::main()] play:{$next['Step']['play_id']} done.", LOG_INFO);
 				}
 			}
 		} catch (Exception $e) {

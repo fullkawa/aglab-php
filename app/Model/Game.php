@@ -8,9 +8,9 @@ App::uses('AppModel', 'Model');
  * 本フレームワークにおけるゲームとは、終了条件を満たすまでルールを適用し続けることである。
  *
  * @property Rule
- * @property GameComponent
+ * @property Compo
  * @property Testplay
- * @property ReportItem
+ * @property Repitem
  *
  * @author fullkawa
  */

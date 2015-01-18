@@ -69,8 +69,8 @@ class Report extends AppModel {
 	 * @return array
 	 */
 	public function _buildResult($testplay) {
-		$this->ReportItem = ClassRegistry::init('ReportItem');
-		$result = $this->ReportItem->getResult($testplay);
+		$this->Repitem = ClassRegistry::init('Repitem');
+		$result = $this->Repitem->getResult($testplay);
 		return $result;
 	}
 

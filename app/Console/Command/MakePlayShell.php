@@ -1,6 +1,6 @@
 <?php
 App::uses('Context', 'Model');
-App::uses('PlayHistory', 'Model');
+App::uses('Step', 'Model');
 
 /**
  * プレイデータ作成バッチ
@@ -40,10 +40,10 @@ class MakePlayShell extends AppShell {
 			}
 			$data = array(
 				'Play' => $play,
-				'PlayHistory' => array(
+				'Step' => array(
 					array(
 						'context'	=> $context,
-						'status'	=> PlayHistory::STATUS_NOT_EXECUTED,
+						'status'	=> Step::STATUS_NOT_EXECUTED,
 					)
 				)
 			);

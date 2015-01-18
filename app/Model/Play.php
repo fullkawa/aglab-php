@@ -4,8 +4,8 @@ App::uses('AppModel', 'Model');
 /**
  * プレイ
  *
- * @property PlayHistory
- * @property PlayData
+ * @property Step
+ * @property Repdata
  *
  * @author fullkawa
  */
@@ -82,8 +82,8 @@ class Play extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'PlayData' => array(
-			'className' => 'PlayData',
+		'Repdata' => array(
+			'className' => 'Repdata',
 			'foreignKey' => 'play_id',
 			'dependent' => true,
 			'conditions' => '',
@@ -95,8 +95,8 @@ class Play extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'PlayHistory' => array(
-			'className' => 'PlayHistory',
+		'Step' => array(
+			'className' => 'Step',
 			'foreignKey' => 'play_id',
 			'dependent' => true,
 			'conditions' => '',

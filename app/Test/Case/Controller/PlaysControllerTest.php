@@ -17,8 +17,7 @@ class PlaysControllerTest extends ControllerTestCase {
 		'app.testplay',
 		'app.game',
 		'app.report',
-		'app.play_data',
-		'app.play_history'
+		'app.repdata',
 	);
 
 /**

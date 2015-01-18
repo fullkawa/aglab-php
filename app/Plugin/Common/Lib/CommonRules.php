@@ -201,8 +201,8 @@ class CommonRules extends Object {
 		if (count(@$context['players']) - count(@$context['winners']) === 1) {
 			$context['stage'] = 'ending';
 
-			$this->PlayData = ClassRegistry::init('PlayData', true);
-			$this->PlayData->record($context, 'played', 1);
+			$this->Repdata = ClassRegistry::init('Repdata', true);
+			$this->Repdata->record($context, 'played', 1);
 
 			$this->log("Game end.", LOG_INFO);
 		}

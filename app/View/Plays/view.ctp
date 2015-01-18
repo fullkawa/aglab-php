@@ -113,7 +113,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Play Histories'); ?></h3>
-	<?php if (!empty($play['PlayHistory'])): ?>
+	<?php if (!empty($play['Step'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -127,7 +127,7 @@
 		<th><?php echo __('Updated'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($play['PlayHistory'] as $playHistory): ?>
+	<?php foreach ($play['Step'] as $playHistory): ?>
 		<tr>
 			<td><?php echo $playHistory['id']; ?></td>
 			<td><?php echo $playHistory['play_id']; ?></td>

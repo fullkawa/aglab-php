@@ -1,11 +1,11 @@
 <?php
 /**
- * PlayHistoryFixture
+ * StepFixture
  *
  */
-class PlayHistoryFixture extends CakeTestFixture {
+class StepFixture extends CakeTestFixture {
 
-	public $import = 'PlayHistory';
+	public $import = 'Step';
 
 /**
  * Records

@@ -11,6 +11,6 @@ Configure::write('PlannerPackageName', 'Common.Lib');
 Configure::write('PlannerClassName', 'PlayPlanner');
 
 /**
- * 一度に処理するPlayHistoryの数
+ * 一度に処理するStepの数
  */
 Configure::write('num_exec_histories', 10);

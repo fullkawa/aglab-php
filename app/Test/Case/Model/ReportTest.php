@@ -14,11 +14,11 @@ class ReportTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.report',
-		'app.report_item',
+		'app.repitem',
 		'app.game',
 		'app.testplay',
 		'app.play',
-		'app.play_data',
+		'app.repdata',
 	);
 
 /**
