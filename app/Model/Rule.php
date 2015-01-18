@@ -101,4 +101,11 @@ class Rule extends AppModel {
 		}
 		return $context;
 	}
+	
+	/**
+	 * 
+	 */
+	public function addReporter() {
+		//
+	}
 }

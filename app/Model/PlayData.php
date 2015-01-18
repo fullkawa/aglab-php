@@ -80,12 +80,18 @@ class PlayData extends AppModel {
 	 * @param array $context コンテキスト
 	 * @param string $key キー
 	 * @param integer $value 値
-	 * @param string $label ラベル
-	 * @param array $detail 詳細データ
+	 * @param array $options
+	 * <dl>
+	 *   <dt>label</dt><dd>ラベル</dd>
+	 *   <dt>detail</dt><dd>[array] 詳細データ</dd>
+	 *   <dt></dt><dd></dd>
+	 * </dl>
 	 * @return mixed saveの結果
 	 */
-	public function record($context, $key, $value, $label = null, $detail = null) {
+	public function record($context, $key, $value, $options = array()) {
 		$items = $this->_getItems($context);
+		$label = @$options['label'];
+		$detail = @$options['detail'];
 		$data = array(
 			'testplay_id'	=> $context['testplay_id'],
 			'play_id'	=> $context['play_id'],
